@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { IAutomotiveConfig, IAutomotiveWidget } from '../interface/Default';
 import axios from 'axios';
+import useRenderer from './useRenderer';
 
 const useAutomotiveWidget: IAutomotiveWidget = ({ name, page, deleted }) => {
   const [widgetData, setWidgetData]: any = useState({});
@@ -30,7 +31,10 @@ const useAutomotiveWidget: IAutomotiveWidget = ({ name, page, deleted }) => {
   }, [widgetState.name]);
 
 
-  return [widgetData, setListener];
+  // Use all processed data to render a template
+  const renderWidget = useRenderer(widgetData);
+
+  return [widgetData, setListener, renderWidget];
 }
 
 export default useAutomotiveWidget;

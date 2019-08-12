@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 import useAutomotiveWidget from './hooks/useWidget';
 
-const App: React.FC = () => {
-  const [widgetData, setListener]: any = useAutomotiveWidget({ name: 'users', page: 1, deleted: false });
+const App: FunctionComponent = () => {
+  const [widgetData, setListener, widgetRender]: any = useAutomotiveWidget({ name: 'users', page: 1, deleted: false });
   const [page, setPage] = useState(1);
 
   // Example with combined listeners
@@ -34,14 +34,7 @@ const App: React.FC = () => {
         Change type
       </button>
       Widget preview:
-      {
-        widgetData.data.map(({ id, avatar, email }: any) => {
-          return <li key={ id }>
-            <img src={avatar} alt="" />
-            <span>{email}</span>
-          </li>;
-        })
-      }
+      { widgetRender }
     </div>
   );
 }
