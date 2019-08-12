@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useAutomotiveWidget from './hooks/Base';
+import useAutomotiveWidget from './hooks/useWidget';
 
 const App: React.FC = () => {
   const [widgetData, setListener]: any = useAutomotiveWidget({ name: 'users', page: 1, deleted: false });
