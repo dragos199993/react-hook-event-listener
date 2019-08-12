@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { IAutomotiveConfig, IAutomotiveWidget } from './interface/Default';
+import { IAutomotiveConfig, IAutomotiveWidget } from '../interface/Default';
 import axios from 'axios';
 
 const useAutomotiveWidget: IAutomotiveWidget = ({ name, page, deleted }) => {
@@ -19,13 +19,13 @@ const useAutomotiveWidget: IAutomotiveWidget = ({ name, page, deleted }) => {
 
   useEffect(() => {
     // Fetch data
-    axios.get(`https://reqres.in/api/${widgetState.name}?page=${widgetState.page}`)
+    axios.get(`https://reqres.in/api/users?page=${widgetState.page}`)
       .then(res => setWidgetData(res.data));
   }, [widgetState.page]);
 
   useEffect(() => {
     // Change data
-    console.log(widgetData);
+    console.log(widgetState.name);
   }, [widgetState.name]);
 
 
