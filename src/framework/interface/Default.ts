@@ -4,7 +4,8 @@ export type IAutomotiveWidget = (props: IAutomotiveWidgetProps) => any;
 
 export interface IAutomotiveWidgetProps {
   name: string;
-  page: number
+  page: number;
+  deleted: boolean;
 }
 
 export interface IAutomotiveStateWidget {

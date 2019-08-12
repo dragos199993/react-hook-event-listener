@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAutomotiveWidget from './framework/Base';
 
 const App: React.FC = () => {
-  const [widgetData, setListener]: any = useAutomotiveWidget({ name: 'px-widget', page: 1 });
+  const [widgetData, setListener]: any = useAutomotiveWidget({ name: 'users', page: 1, deleted: false });
+  const [page, setPage] = useState(1);
 
-  // Example with combine
+  // Example with combined listeners
   const combineListener = async () => {
-    await setListener('name', 'px-test');
-    await setListener('page', 2);
+    await setListener('page', page);
+    await setPage(page + 1);
   }
 
   if (!widgetData.data) {
@@ -17,7 +18,15 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <button onClick={() => combineListener()}>
-        Custom
+        Next page
+      </button>
+
+      <button onClick={() => setListener('name', 'employee')}>
+        Change type
+      </button>
+
+      <button onClick={() => setListener('deleted', true)}>
+        Change type
       </button>
       Widget preview:
       {
