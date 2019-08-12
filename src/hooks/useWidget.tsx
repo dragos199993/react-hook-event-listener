@@ -8,7 +8,8 @@ const useAutomotiveWidget: IAutomotiveWidget = ({ name, page, deleted }) => {
 
   const setListener = (type: string, value: any) => {
     return new Promise((res) => {
-      res(addListener({ ...widgetState, [type]: value }));
+      addListener({ ...widgetState, [type]: value })
+      res(widgetData);
     });
   }
 

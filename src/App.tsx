@@ -7,13 +7,18 @@ const App: React.FC = () => {
 
   // Example with combined listeners
   const combineListener = async () => {
-    await setListener('page', page);
+
+    // Use data from the promise or either from the global state widgetData
+    let data: any = await setListener('page', page);
+    console.log(data);
+    console.log(widgetData);
     await setPage(page + 1);
   }
 
   if (!widgetData.data) {
     return null;
   }
+
   // console.log(pxWidget.data.data);
   return (
     <div className="App">
